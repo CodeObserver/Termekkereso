@@ -1,16 +1,16 @@
-## Termekkereso
+# Termekkereso
 Saját felhasználásra tervezett boltkereső. 
 Találd meg a kritériumaidnak legjobban megfelelő boltot a Magyarországon elérhető listából.
 
-# Funkciók:
+## Funkciók:
 - Termékek kiválasztása
 - Boltok kilistázása
 - Térképen megjeleníteni a kritériumoknak megfelelő boltokat (pl távolság, ár, elérhető termékek alapján)
 
-# Tech stack:
+## Tech stack:
 Python Flask, Folium Maps, Bootstrap, JavaScript
 
-# Adatforrás:
+## Adatforrás:
 arfigyelo.gvh.hu API
 
 
