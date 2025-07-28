@@ -1,6 +1,6 @@
-# Termekkereso
+# Termékkereső
 Saját felhasználásra tervezett boltkereső. 
-Találd meg a kritériumaidnak legjobban megfelelő boltot a Magyarországon elérhető listából.
+Találd meg a kritériumaidnak legjobban megfelelő élelmiszerboltot a Magyarországon elérhető listából.
 
 ## Funkciók:
 - Termékek kiválasztása
