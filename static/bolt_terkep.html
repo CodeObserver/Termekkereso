@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_821210db590ea7932cbc578774144c56 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_821210db590ea7932cbc578774144c56" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_821210db590ea7932cbc578774144c56 = L.map(
+                "map_821210db590ea7932cbc578774144c56",
+                {
+                    center: [47.4448813, 18.7504665],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_80f9159dc87f00d137ef98a1184345be = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_80f9159dc87f00d137ef98a1184345be.addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var marker_05e9bf9a72d9fee5e1d10941235b1598 = L.marker(
+                [47.4448813, 18.7504665],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var icon_354487ff394f8f0beeb1e4860945b558 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_05e9bf9a72d9fee5e1d10941235b1598.bindTooltip(
+                `<div>
+                     Keresési hely
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_05e9bf9a72d9fee5e1d10941235b1598.setIcon(icon_354487ff394f8f0beeb1e4860945b558);
+            
+    
+            var marker_228fc13935f7e984a58381c8aec61385 = L.marker(
+                [47.473382, 18.836907],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_19c7fb2065bb9205390fcbfa8cb0f6a9 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/8/8e/Penny-Logo.svg\" width=\"33\" height=\"33\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_8478d061649cec5aa7ee49fe48af2aef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89ca5da81fdd8b10286350365cabba25 = $(`<div id="html_89ca5da81fdd8b10286350365cabba25" style="width: 100.0%; height: 100.0%;"><b>PENNY</b><br><br>Biatorbágy, Csodaszarvas u. 1.<br><br>Végösszeg: 599.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_8478d061649cec5aa7ee49fe48af2aef.setContent(html_89ca5da81fdd8b10286350365cabba25);
+            
+        
+
+        marker_228fc13935f7e984a58381c8aec61385.bindPopup(popup_8478d061649cec5aa7ee49fe48af2aef)
+        ;
+
+        
+    
+    
+            marker_228fc13935f7e984a58381c8aec61385.bindTooltip(
+                `<div>
+                     Ismeretlen (7.25 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_228fc13935f7e984a58381c8aec61385.setIcon(div_icon_19c7fb2065bb9205390fcbfa8cb0f6a9);
+            
+    
+            var marker_9b30562cea3e8f3857e089fee29f1cb6 = L.marker(
+                [47.49131, 18.63528],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_836a50ebde696ca00ed96b9f9d061aa4 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_a8e6ebd71358fbd9da63fe8fd6cc1a6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d84f5478cd15333bb603ee3a92fbd618 = $(`<div id="html_d84f5478cd15333bb603ee3a92fbd618" style="width: 100.0%; height: 100.0%;"><b>DM</b><br><br>Bicske, Kossuth tér 1.<br><br>Végösszeg: 559.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_a8e6ebd71358fbd9da63fe8fd6cc1a6d.setContent(html_d84f5478cd15333bb603ee3a92fbd618);
+            
+        
+
+        marker_9b30562cea3e8f3857e089fee29f1cb6.bindPopup(popup_a8e6ebd71358fbd9da63fe8fd6cc1a6d)
+        ;
+
+        
+    
+    
+            marker_9b30562cea3e8f3857e089fee29f1cb6.bindTooltip(
+                `<div>
+                     Ismeretlen (10.10 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b30562cea3e8f3857e089fee29f1cb6.setIcon(div_icon_836a50ebde696ca00ed96b9f9d061aa4);
+            
+    
+            var marker_21620dba37a6932e9396141f5fe370f3 = L.marker(
+                [47.4410342, 18.8878328],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_13fbd48ba840e8da71b297df3a88be83 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/fr/c/cd/Logo_Auchan_%282015%29.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_3a076eebdef38a13c1a59007a8919e18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1aea7834422ffe3a94a33f8542a40dd5 = $(`<div id="html_1aea7834422ffe3a94a33f8542a40dd5" style="width: 100.0%; height: 100.0%;"><b>AUCHAN</b><br><br>Törökbálint, Torbágy u. 1.<br><br>Végösszeg: 1849.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_3a076eebdef38a13c1a59007a8919e18.setContent(html_1aea7834422ffe3a94a33f8542a40dd5);
+            
+        
+
+        marker_21620dba37a6932e9396141f5fe370f3.bindPopup(popup_3a076eebdef38a13c1a59007a8919e18)
+        ;
+
+        
+    
+    
+            marker_21620dba37a6932e9396141f5fe370f3.bindTooltip(
+                `<div>
+                     Ismeretlen (10.37 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_21620dba37a6932e9396141f5fe370f3.setIcon(div_icon_13fbd48ba840e8da71b297df3a88be83);
+            
+    
+            var marker_b32649fa36e75b1e37c2f52deb3ea3b0 = L.marker(
+                [47.4138281, 18.8828425],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_fa645ea16cd1f01accf1e162e83d7aaf = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_feb844a42c200371a1f53d1905ac8919 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b492f549b23f17e1f1997a6c4a9a4422 = $(`<div id="html_b492f549b23f17e1f1997a6c4a9a4422" style="width: 100.0%; height: 100.0%;"><b>DM</b><br><br>Érd, Iparos utca 5.<br><br>Végösszeg: 559.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_feb844a42c200371a1f53d1905ac8919.setContent(html_b492f549b23f17e1f1997a6c4a9a4422);
+            
+        
+
+        marker_b32649fa36e75b1e37c2f52deb3ea3b0.bindPopup(popup_feb844a42c200371a1f53d1905ac8919)
+        ;
+
+        
+    
+    
+            marker_b32649fa36e75b1e37c2f52deb3ea3b0.bindTooltip(
+                `<div>
+                     Ismeretlen (10.57 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b32649fa36e75b1e37c2f52deb3ea3b0.setIcon(div_icon_fa645ea16cd1f01accf1e162e83d7aaf);
+            
+    
+            var marker_3b2f4546646c7db75a71d79c94c1c318 = L.marker(
+                [47.41378, 18.88284],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_412ddbc35a9792e07a0605bb418ca261 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/7/7c/Spar-logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_d8fbcc61288db879fc34487fdafa4444 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eeab63b3603a4841f46f557bacd312a4 = $(`<div id="html_eeab63b3603a4841f46f557bacd312a4" style="width: 100.0%; height: 100.0%;"><b>SPAR</b><br><br>ÉRD, Iparos utca 5.<br><br>Végösszeg: 569.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_d8fbcc61288db879fc34487fdafa4444.setContent(html_eeab63b3603a4841f46f557bacd312a4);
+            
+        
+
+        marker_3b2f4546646c7db75a71d79c94c1c318.bindPopup(popup_d8fbcc61288db879fc34487fdafa4444)
+        ;
+
+        
+    
+    
+            marker_3b2f4546646c7db75a71d79c94c1c318.bindTooltip(
+                `<div>
+                     Ismeretlen (10.57 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3b2f4546646c7db75a71d79c94c1c318.setIcon(div_icon_412ddbc35a9792e07a0605bb418ca261);
+            
+    
+            var marker_69c18042a026860bb0bf37ceed660be0 = L.marker(
+                [47.4647246, 18.8882917],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_85aa807fd70e3383efc4f1cc7a11a2c0 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_57ebe4d459ecd05307c70969863683ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9fe9d2a07c3b54e566bb546819491577 = $(`<div id="html_9fe9d2a07c3b54e566bb546819491577" style="width: 100.0%; height: 100.0%;"><b>DM</b><br><br>Biatorbágy, Budaörsi út 4.<br><br>Végösszeg: 559.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_57ebe4d459ecd05307c70969863683ef.setContent(html_9fe9d2a07c3b54e566bb546819491577);
+            
+        
+
+        marker_69c18042a026860bb0bf37ceed660be0.bindPopup(popup_57ebe4d459ecd05307c70969863683ef)
+        ;
+
+        
+    
+    
+            marker_69c18042a026860bb0bf37ceed660be0.bindTooltip(
+                `<div>
+                     Ismeretlen (10.62 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_69c18042a026860bb0bf37ceed660be0.setIcon(div_icon_85aa807fd70e3383efc4f1cc7a11a2c0);
+            
+    
+            var marker_902b1481f0bccc81fdb3412c28f2bfbd = L.marker(
+                [47.5012016, 18.6287193],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_cdc02f04e3bb73074d76f79fa96c837b = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/en/b/b0/Tesco_Logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_c608257199868b33f143c564c2fc4a0a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c51ea23196b1233df5ee4ee23bd63acc = $(`<div id="html_c51ea23196b1233df5ee4ee23bd63acc" style="width: 100.0%; height: 100.0%;"><b>TESCO</b><br><br>Bicske, Csabdi út 4.<br><br>Végösszeg: 599.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_c608257199868b33f143c564c2fc4a0a.setContent(html_c51ea23196b1233df5ee4ee23bd63acc);
+            
+        
+
+        marker_902b1481f0bccc81fdb3412c28f2bfbd.bindPopup(popup_c608257199868b33f143c564c2fc4a0a)
+        ;
+
+        
+    
+    
+            marker_902b1481f0bccc81fdb3412c28f2bfbd.bindTooltip(
+                `<div>
+                     Ismeretlen (11.11 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_902b1481f0bccc81fdb3412c28f2bfbd.setIcon(div_icon_cdc02f04e3bb73074d76f79fa96c837b);
+            
+    
+            var marker_59438fa219f9549c6f852430ddb40008 = L.marker(
+                [47.408587, 18.888916],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_606cd95d1e04ee04be1c86cd7cee763f = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/8/8e/Penny-Logo.svg\" width=\"33\" height=\"33\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_71a96ced8d1876388192c28ade5ae218 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb51051acf422b3aa20d6571a574a56c = $(`<div id="html_fb51051acf422b3aa20d6571a574a56c" style="width: 100.0%; height: 100.0%;"><b>PENNY</b><br><br>Érd, Bajcsy-Zs. út 133-135.<br><br>Végösszeg: 599.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_71a96ced8d1876388192c28ade5ae218.setContent(html_fb51051acf422b3aa20d6571a574a56c);
+            
+        
+
+        marker_59438fa219f9549c6f852430ddb40008.bindPopup(popup_71a96ced8d1876388192c28ade5ae218)
+        ;
+
+        
+    
+    
+            marker_59438fa219f9549c6f852430ddb40008.bindTooltip(
+                `<div>
+                     Ismeretlen (11.20 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59438fa219f9549c6f852430ddb40008.setIcon(div_icon_606cd95d1e04ee04be1c86cd7cee763f);
+            
+    
+            var marker_84440230cf482cb438f6b65ef2c15475 = L.marker(
+                [47.451274, 18.903409],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_97bdcf538c778ae5d5b4b2f091042130 = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/7/7c/Spar-logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_6b35b26d4d6c40440f3a5b18ab47060d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1442ba7c75cb970fe3f55be434b8cbb8 = $(`<div id="html_1442ba7c75cb970fe3f55be434b8cbb8" style="width: 100.0%; height: 100.0%;"><b>SPAR</b><br><br>Törökbálint, Feketerét utca 2.<br><br>Végösszeg: 569.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_6b35b26d4d6c40440f3a5b18ab47060d.setContent(html_1442ba7c75cb970fe3f55be434b8cbb8);
+            
+        
+
+        marker_84440230cf482cb438f6b65ef2c15475.bindPopup(popup_6b35b26d4d6c40440f3a5b18ab47060d)
+        ;
+
+        
+    
+    
+            marker_84440230cf482cb438f6b65ef2c15475.bindTooltip(
+                `<div>
+                     Ismeretlen (11.56 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_84440230cf482cb438f6b65ef2c15475.setIcon(div_icon_97bdcf538c778ae5d5b4b2f091042130);
+            
+    
+            var marker_ec64a3b39d00ae42c354cff14b88fc61 = L.marker(
+                [47.4511419, 18.9036884],
+                {
+}
+            ).addTo(map_821210db590ea7932cbc578774144c56);
+        
+    
+            var div_icon_bd62da3bc0b91438d0f722b85dfabe5b = L.divIcon({
+  "html": "\u003cimg src=\"https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg\" width=\"15\" height=\"15\" /\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_0ccbfba03ddbe8a5a86ba09b02bfa66c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e8c8201417f333a8988f8c0f869fd949 = $(`<div id="html_e8c8201417f333a8988f8c0f869fd949" style="width: 100.0%; height: 100.0%;"><b>DM</b><br><br>Törökbálint, Feketerét u. 2.<br><br>Végösszeg: 559.0 Ft<br><br>Nyitvatartás: <br><br>Elérhetőtermékek:1</div>`)[0];
+                popup_0ccbfba03ddbe8a5a86ba09b02bfa66c.setContent(html_e8c8201417f333a8988f8c0f869fd949);
+            
+        
+
+        marker_ec64a3b39d00ae42c354cff14b88fc61.bindPopup(popup_0ccbfba03ddbe8a5a86ba09b02bfa66c)
+        ;
+
+        
+    
+    
+            marker_ec64a3b39d00ae42c354cff14b88fc61.bindTooltip(
+                `<div>
+                     Ismeretlen (11.58 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec64a3b39d00ae42c354cff14b88fc61.setIcon(div_icon_bd62da3bc0b91438d0f722b85dfabe5b);
+            
+</script>
+</html>
