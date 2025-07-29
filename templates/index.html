@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <title>Termékbolt-kereső</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body { padding: 2rem; background-color: #f8f9fa; }
+    #talalatok li { cursor: pointer; }
+    .termek-chip {
+      background-color: #e2e6ea;
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      margin: 0.2rem;
+      border-radius: 0.5rem;
+    }
+    .bolt-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .bolt-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    .bolt-card .card-body {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">🏪 Termékbolt-kereső</h2>
+
+    <div class="mb-3">
+      <label for="varos" class="form-label">Város</label>
+      <input type="text" id="varos" class="form-control" placeholder="Pl. Veszprém" />
+    </div>
+
+    <div class="mb-3">
+      <label for="maxBoltszam" class="form-label">Megjelenítendő boltok száma</label>
+      <input type="number" id="maxBoltszam" class="form-control" placeholder="Pl. 5" min="1" max="50" />
+    </div>
+
+    <div class="mb-3">
+      <label for="termek" class="form-label">Termék</label>
+      <input type="text" id="termek" class="form-control" placeholder="Pl. kenyér" />
+      <ul class="list-group mt-1" id="talalatok" style="display: none;"></ul>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Kiválasztott termékek:</label>
+      <div id="kivalasztottak"></div>
+    </div>
+
+    <button id="keres" class="btn btn-primary">🔍 Keresés</button>
+
+    <div id="eredmeny" class="mt-4"></div>
+    <div id="terkep" class="mt-4"></div>
+  </div>
+
+  <script>
+    const termekInput = document.getElementById("termek");
+    const talalatok = document.getElementById("talalatok");
+    const kivalasztottak = document.getElementById("kivalasztottak");
+    const eredmeny = document.getElementById("eredmeny");
+    const terkep = document.getElementById("terkep");
+
+    let valasztottTermekek = [];
+
+    termekInput.addEventListener("input", () => {
+      const q = termekInput.value;
+      if (q.length < 2) {
+        talalatok.style.display = "none";
+        return;
+      }
+
+      // Javított fetch hívás
+      fetch(`/keres_termekek?q=${encodeURIComponent(q)}`)
+        .then(res => res.json())
+        .then(data => {
+          talalatok.innerHTML = "";
+          data.forEach(t => {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+
+            // Kép és név együtt
+            li.innerHTML = `
+              <img src="${t.imageUrl}" alt="${t.name}" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
+              <span>${t.name}</span>
+            `;
+
+            li.addEventListener("click", () => {
+              valasztottTermekek.push(t.id);
+              const chip = document.createElement("span");
+              chip.className = "termek-chip";
+              chip.textContent = t.name;
+              kivalasztottak.appendChild(chip);
+              termekInput.value = "";
+              talalatok.style.display = "none";
+            });
+            talalatok.appendChild(li);
+          });
+          talalatok.style.display = "block";
+        })
+        .catch(error => {
+          console.error('Hiba a termék keresése során:', error);
+        });
+    });
+
+    document.getElementById("keres").addEventListener("click", () => {
+      const varos = document.getElementById("varos").value.trim();
+      const maxBoltszam = parseInt(document.getElementById("maxBoltszam").value) || 5;
+
+      if (!varos || valasztottTermekek.length === 0) {
+        alert("Add meg a várost és legalább egy terméket.");
+        return;
+      }
+
+      eredmeny.innerHTML = "Keresés folyamatban...";
+      terkep.innerHTML = "";
+
+      fetch("/kereses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ varos, termekek: valasztottTermekek, max: maxBoltszam }),
+      })
+        .then(async res => {
+          const contentType = res.headers.get("content-type");
+          if (!res.ok) {
+            const msg = contentType && contentType.includes("application/json")
+              ? (await res.json()).hiba
+              : "Ismeretlen szerverhiba.";
+            throw new Error(msg);
+          }
+          return res.json();
+        })
+        .then(data => {
+          eredmeny.innerHTML = "<h4>📍 Legközelebbi boltok:</h4>";
+          
+          // Boltlánc logók URL-jei
+          const boltLogok = {
+            'spar': 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Spar-logo.svg',
+            'dm': 'https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg',
+            'lidl': 'https://upload.wikimedia.org/wikipedia/commons/9/91/Lidl-Logo.svg',
+            'auchan': 'https://upload.wikimedia.org/wikipedia/fr/c/cd/Logo_Auchan_%282015%29.svg',
+            'tesco': 'https://upload.wikimedia.org/wikipedia/en/b/b0/Tesco_Logo.svg',
+            'rossmann': 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Rossmann_Logo.svg',
+            'penny': 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Penny-Logo.svg',
+            'mueller': 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Mueller-logo.svg',
+            'aldi': 'https://upload.wikimedia.org/wikipedia/commons/6/64/AldiWorldwideLogo.svg'
+          };
+          
+          data.boltlista.forEach(bolt => {
+            const card = document.createElement("div");
+            card.className = "card mb-3 bolt-card";
+
+            // Boltlánc név kinyerése az UUID-ből
+            const boltLanc = bolt.lanc.split('-')[0].toLowerCase();
+            const logoUrl = boltLogok[boltLanc];
+            
+            // Háttér logó beállítása
+            if (logoUrl) {
+              card.style.setProperty('--logo-url', `url(${logoUrl})`);
+              card.style.backgroundImage = 'var(--logo-url)';
+              card.style.backgroundSize = '120px';
+              card.style.backgroundRepeat = 'no-repeat';
+              card.style.backgroundPosition = 'top right';
+              card.style.backgroundPositionX = 'calc(100% - 10px)';
+              card.style.backgroundPositionY = '10px';
+              card.style.opacity = '1';
+            }
+
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            cardBody.style.position = 'relative';
+            cardBody.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+
+            // Javított template literal szintaxis
+            cardBody.innerHTML = `
+              <h5 class="card-title">${bolt.lanc.toUpperCase()}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${bolt.cim}</h6>
+              <p class="card-text">
+                <strong>Távolság:</strong> ${bolt.tavolsag} km<br>
+                <strong>Végösszeg:</strong> ${bolt.ar} Ft<br>
+                <strong>Elérhető termékek:</strong> ${bolt.elerhetoTermekek} db
+              </p>
+            `;
+
+            // Termékek megjelenítése, ha van
+            if (bolt.termekek && bolt.termekek.length > 0) {
+              const termekRow = document.createElement("div");
+              termekRow.className = "row row-cols-2 row-cols-md-3 g-2";
+
+              bolt.termekek.forEach(termek => {
+                const col = document.createElement("div");
+                col.className = "col";
+
+                const termekBox = document.createElement("div");
+                termekBox.className = "border p-2 h-100 text-center bg-light rounded";
+
+                const img = document.createElement("img");
+                img.src = termek.kep;
+                img.alt = termek.nev;
+                img.style.maxWidth = "100%";
+                img.style.height = "100px";
+                img.className = "mb-2";
+
+                const nev = document.createElement("div");
+                nev.textContent = termek.nev;
+                nev.className = "small";
+
+                termekBox.appendChild(img);
+                termekBox.appendChild(nev);
+                col.appendChild(termekBox);
+                termekRow.appendChild(col);
+              });
+
+              cardBody.appendChild(termekRow);
+            }
+
+            card.appendChild(cardBody);
+            eredmeny.appendChild(card);
+          });
+
+          // Térkép megjelenítése
+          const iframe = document.createElement("iframe");
+          iframe.src = `/static/${data.terkep}`;
+          iframe.width = "100%";
+          iframe.height = "500";
+          iframe.style.border = "1px solid #ccc";
+          terkep.appendChild(iframe);
+        })
+        .catch(err => {
+          eredmeny.innerHTML = `<div class="alert alert-danger">⚠️ ${err.message}</div>`;
+        });
+    });
+  </script>
+</body>
+</html>
